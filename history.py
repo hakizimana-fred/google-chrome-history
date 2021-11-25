@@ -2,9 +2,14 @@ import sqlite3
 import pandas as pd
 from tabulate import tabulate
 import os
+import platform
 
 
 def main():
+    if platform.system() != 'Linux':
+        print('Your google chrome path might be different')
+        return
+        
     chrome_path = f"{os.path.expanduser('~')}/.config/google-chrome/Default/History"
     con = sqlite3.connect(chrome_path)
     c = con.cursor()
